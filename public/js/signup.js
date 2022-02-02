@@ -13,7 +13,7 @@ async function registration(event) {
     body: JSON.stringify(Object.fromEntries(new FormData(formWrap)))
   })
   const result = await response.json()
-  console.log(response)
+  console.log(result)
 }
 
 
