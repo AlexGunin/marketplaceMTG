@@ -29,11 +29,21 @@ body::after {
 }
 
 .form-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
   position: absolute;
   top: 25%;
-  left: 30%;
-  right: 30%;
+  left: 25%;
+  right: 25%;
   bottom: 25%;
   border-radius: 20px;
-  margin: 0 auto;
 }
+
+.form-wrap > button {
+  width: fit-content;
+  margin-top: 20px;
+}
+
