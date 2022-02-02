@@ -5,9 +5,9 @@ const router = express.Router();
 
 router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  const card = await Card.findOne({ where: { id } });
-  const user = await User.findOne({ where: { id: user_id } });
-  res.render('post');
+  const card = await Card.findOne({ where: { id }, include: [{ model: 'Users' }] });
+  console.log('==========================================================>',card);
+  res.render('post', { card });
 });
 
 module.exports = router;
