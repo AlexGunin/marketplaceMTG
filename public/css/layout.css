@@ -1,0 +1,39 @@
+
+* {
+
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  padding: 50px;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  min-height: 100vh;
+  background: url("/img/mainBg.jpg") no-repeat center center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  filter: brightness(0.3);
+}
+
+.nav {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.form-wrap {
+  position: absolute;
+  top: 25%;
+  left: 30%;
+  right: 30%;
+  bottom: 25%;
+  border-radius: 20px;
+  margin: 0 auto;
+}
