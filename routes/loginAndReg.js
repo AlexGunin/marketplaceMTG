@@ -27,7 +27,7 @@ router.post('/signup', async (req, res) => {
   const {name, email, password, city} = req.body
   const findCity = await City.findOne({where: {title: city}})
   const cityId = findCity?.id ?? (await City.create({title: city})).id
-  const user = await User.findOne({where:})
+  const user = await User.findOne({ where: { email }})
   res.json({message: 'ok'})
 });
 module.exports = router;

@@ -1,47 +1,33 @@
 'use strict';
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Cards', {
+    await queryInterface.createTable('Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      user_id: {
+      buyer_id: {
         type: Sequelize.INTEGER,
         references: {
           model: 'Users',
           key: 'id',
         },
       },
-      title: {
-        type: Sequelize.STRING
-      },
-      body: {
-        type: Sequelize.TEXT
-      },
-      image: {
-        type: Sequelize.TEXT
-      },
-      city_id: {
+      card_id: {
         type: Sequelize.INTEGER,
         references: {
-          model: 'Cities',
+          model: 'Cards',
           key: 'id',
         },
       },
-      price: {
-        type: Sequelize.INTEGER
-      },
-      views: {
-        type: Sequelize.INTEGER
-      },
-      state: {
-        type: Sequelize.STRING
-      },
-      available: {
-        type: Sequelize.BOOLEAN,
+      seller_id: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -54,6 +40,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('Cards');
+    await queryInterface.dropTable('Orders');
   }
 };

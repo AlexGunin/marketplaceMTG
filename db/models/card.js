@@ -11,8 +11,9 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.belongsTo(models.City, {foreignKey: 'city_id'});
-      this.belongsTo(models.User, {foreignKey: 'user_id'});
+      this.belongsTo(models.City, { foreignKey: 'city_id' });
+      this.belongsTo(models.User, { foreignKey: 'user_id' });
+      this.hasOne(models.Order, { foreignKey: 'card_id' });
     }
   }
 
@@ -24,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     city_id: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     views: DataTypes.INTEGER,
-    state: DataTypes.STRING
+    state: DataTypes.STRING,
+    available: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Card',
