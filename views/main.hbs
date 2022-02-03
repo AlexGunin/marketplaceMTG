@@ -1,0 +1,38 @@
+<link href="/css/main.css"
+      rel="stylesheet">
+<div class="search-wrap">
+  <input class="search"
+         id="search"
+         type="text">
+  <i class="fas fa-times clear"></i>
+  <i class="fas fa-search search"></i>
+</div>
+<div class="content-wrap">
+  <div class="grid-layout">
+    {{#each allCards}}
+    <div class="card-wrap">
+      <a class="link-card"
+         href="/card/{{this.id}}">
+        <div class="image-wrap">
+          <img alt="Card"
+               class="card-image"
+               src="/img/card1.png">
+        </div>
+      </a>
+      <div class="info">
+        <a class="title"
+           href="/card/{{this.id}}">
+          <span>{{this.title}}</span>
+        </a>
+        <span class="price">{{this.price}} Р</span>
+        <span>{{this.City.title}}</span>
+        <span>{{this.createdAt}}</span>
+      </div>
+      <button class="btn btn-success"
+              type="button">Купить
+      </button>
+      <div class="buyer"><a href="/user/profile/{{this.User.id}}">{{this.User.name}}</a></div>
+    </div>
+    {{/each}}
+  </div>
+</div>

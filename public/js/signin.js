@@ -1,20 +1,21 @@
-const formWrap = document.querySelector('.form-wrap')
-const loginBtn = document.querySelector('.btn-success')
+const formWrap = document.querySelector('.form-wrap');
 
-
-formWrap.addEventListener('submit', login)
+formWrap.addEventListener('submit', login);
 
 async function login(event) {
-  event.preventDefault()
-  const response = fetch('http://localhost:3000/user/signin', {
+  event.preventDefault();
+  const response = await fetch(`${window.location.origin}/user/signin`, {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
     },
-    body: JSON.stringify(Object.fromEntries(new FormData(formWrap)))
-  })
-  const result = await response.json()
-  console.log(result)
+    body: JSON.stringify(Object.fromEntries(new FormData(formWrap))),
+  });
+  const result = await response.json();
+  if (result.message) {
+    window.location.href = `${window.location.origin}/main`;
+    console.log(result);
+  } else {
+    console.log(result.error);
+  }
 }
-
-
