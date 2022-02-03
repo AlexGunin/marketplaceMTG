@@ -1,0 +1,12 @@
+.bucket {
+  display: flex;
+  padding-left: 35px;
+  padding-top: 35px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  color: whitesmoke;
+  padding-top: 45px;
+}

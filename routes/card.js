@@ -20,21 +20,28 @@ router.get('/:id', async (req, res) => {
 });
 
 router.get('/', async (req, res) => {
-  res.render('newCard', {});
+  res.render('newCard');
 });
 
 router.post('/', async (req, res) => {
-  const user_id = req.session.userId;
-  const {
-    city, title, body, image, price, state,
-  } = req.body;
-  const cityOne = await City.findOne({ where: { title: city } });
-  const city_id = cityOne ? cityOne.id : (await City.create({ title: city })).id;
-  const newCard = await Card.create({
-    user_id, title, body, image, city_id, price, state, available: true, views: 0,
-  });
-  const cardId = newCard.id;
-  res.redirect(`/card/${cardId}`);
+  // const user_id = req.session.userId;
+  // const {
+  //   city, title, body, image, price, state,
+  // } = req.body;
+  // console.log('==========================================================>', req.body);
+
+  // const cityOne = await City.findOne({ where: { title: city } });
+  // const city_id = cityOne ? cityOne.id : (await City.create({ title: city })).id;
+  // const newCard = await Card.create({
+  //   user_id, title, body, image, city_id, price, state, available: true, views: 0,
+  // });
+  // console.log('==========================================================>', image);
+  // const cardId = newCard.id;
+  // res.redirect(`/card/${cardId}`);
+  console.log(req.body);
 });
 
+router.get('/bucket', (req, res) => {
+  res.render('bucket');
+});
 module.exports = router;
