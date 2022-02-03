@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
       this.hasOne(models.Card, { foreignKey: 'user_id' });
     }
   }
+
   User.init({
     name: DataTypes.STRING,
     email: DataTypes.STRING,

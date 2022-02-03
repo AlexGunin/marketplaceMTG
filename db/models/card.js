@@ -13,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.City, { foreignKey: 'city_id' });
       this.belongsTo(models.User, { foreignKey: 'user_id' });
+
     }
   }
+
   Card.init({
     user_id: DataTypes.INTEGER,
     title: DataTypes.STRING,

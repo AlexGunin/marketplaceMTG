@@ -1,35 +1,52 @@
-body{background:url(https://bootstraptema.ru/images/bg/bg-1.png)}
 
-#main {
- background-color: #4e4141;
- padding: 20px;
--webkit-border-radius: 4px;
- -moz-border-radius: 4px;
- -ms-border-radius: 4px;
- -o-border-radius: 4px;
- border-radius: 4px;
- border-bottom: 4px solid rgb(44, 35, 35);
+.leftmenu{
+  justify-content: center;
+  border-radius: 3%;
+      flex-direction: column;
+      display: inline-flex;
+      background: #ffffff17;
+      box-shadow: 0px 0px 6px 2px rgb(255 255 255 / 30%); 
+}  
+a{
+  font-family: Impact, fantasy;
+  margin-top: 15px;
+  color: antiquewhite;
+
 }
-#real-estates-detail #author img {
- -webkit-border-radius: 100%;
- -moz-border-radius: 100%;
- -ms-border-radius: 100%;
- -o-border-radius: 100%;
- border-radius: 100%;
- border: 5px solid #ecf0f1;
- margin-bottom: 10px;
+button{
+  font-size: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  font-family: Impact, fantasy;
+  border-radius: 10%;
+  margin: 4%;
+  background-color: rgb(233 233 233 / 25%)
 }
-#real-estates-detail .sosmed-author i.fa {
- width: 30px;
- height: 30px;
- border: 2px solid #bdc3c7;
- color: #bdc3c7;
- padding-top: 6px;
- margin-top: 10px;
+.data{
+  color: aliceblue;
+  max-width: 700px;
+  max-height: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 40%;
+  /* justify-content: flex-end;
+  align-content: center; */
+  justify-content: center;
+align-items:center;
+  background: #ffffff17;
+  box-shadow: 0px 0px 6px 2px rgb(255 255 255 / 30%); 
+  border-radius: 5%;
+  padding: 2%;
 }
-.panel-default .panel-heading {
- background-color: #fff;
+img{
+  border-radius: 10%;
+  max-width: 250px;
+  max-height: 250px;
 }
-#real-estates-detail .slides li img {
- height: 450px;
+.wrap{
+  margin-top: 100px;
+  display: flex;
+  justify-content: space-between;
 }

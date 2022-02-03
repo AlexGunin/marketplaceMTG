@@ -1,11 +1,11 @@
 const express = require('express');
-const router = express.Router()
-
+const router = express.Router();
+const { User, City, Card } = require('../db/models');
 
 
 router.get('/', (req, res) => {
-  
-  res.render('profile')
+  const user = User.findOne();
+  res.render('profile', { user });
 })
 
-module.exports = router
+module.exports = router;

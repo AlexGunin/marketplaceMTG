@@ -13,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.hasOne(models.User, { foreignKey: 'city_id' });
       this.hasOne(models.Card, { foreignKey: 'city_id' });
+
     }
   }
+
   City.init({
     title: DataTypes.STRING
   }, {
