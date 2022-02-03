@@ -52,6 +52,11 @@ body::after {
   border-radius: 50%;
   background: url("/img/logo.jpg") no-repeat center center;
   background-size: cover;
+  transition: all 0.5s ease-in-out;
+}
+
+.logo:hover {
+  transform: scale(0.95);
 }
 
 .logo-link {

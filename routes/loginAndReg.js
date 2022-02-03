@@ -14,7 +14,7 @@ router.post('/signin', async (req, res) => {
     if (user.password === sha256(password)) {
       req.session.username = user.name;
       req.session.userId = user.id;
-
+      req.session.userCity = user.city;
       res.json({ message: 'OK' });
     } else {
       res.json({ error: 'неверный пароль' });
@@ -44,7 +44,7 @@ router.post('/signup', async (req, res) => {
 
 router.get('/logout', (req, res) => {
   req.session.destroy();
-  res.clearCookie('name');
+  res.clearCookie('auth');
   res.redirect('/user/signin');
 });
 module.exports = router;
