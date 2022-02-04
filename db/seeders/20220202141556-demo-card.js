@@ -19,6 +19,7 @@ module.exports = {
       views: 1,
       state: 'в идеальном состоянии',
       available: true,
+      quantity: 3,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -31,6 +32,7 @@ module.exports = {
       views: 1,
       state: 'в хорошем состоянии',
       available: true,
+      quantity: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -43,6 +45,7 @@ module.exports = {
       views: 1,
       state: 'в довольно потрепанном состоянии',
       available: true,
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -54,6 +57,8 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      available: true,
+      quantity: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -65,6 +70,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 2,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -76,6 +82,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -87,6 +94,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -98,6 +106,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -109,6 +118,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -120,6 +130,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -131,6 +142,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -142,6 +154,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }, {
@@ -153,6 +166,7 @@ module.exports = {
       price: '450',
       views: 1,
       state: 'в идеальном состоянии',
+      quantity: 5,
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

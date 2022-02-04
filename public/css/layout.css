@@ -29,14 +29,16 @@ body::after {
   content: "";
   position: absolute;
   min-height: 100vh;
-  background: url("/img/mainBg.jpg") no-repeat center center;
-  background-size: cover;
+  background: #000428; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #004e92, #000428); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #004e92, #000428); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
   z-index: -1;
-  filter: brightness(0.3);
 }
 
 .navigation {
@@ -69,17 +71,20 @@ body::after {
   position: relative;
   box-shadow: 0 0 5px 1px rgba(255, 255, 255, 0.4);
   transition: all 0.3s ease-in-out;
+  background: #8585857a;
   color: white;
   font-weight: bold;
   font-size: 24px;
+  border-radius: 20px;
+  margin: 10px;
 }
 
 .nav-item:hover {
-  box-shadow: 0 0 4px 2px rgb(217, 157, 95);
+  background: white;
 }
 
-.nav-item {
-  margin: 10px;
+.nav-link {
+  color: white;
 }
 
 .form-wrap {
@@ -104,3 +109,19 @@ body::after {
   margin-top: 20px;
 }
 
+.form-control {
+  transition: 0.5s ease-in-out;
+}
+
+.form-control.error {
+  border: 3px solid #cb4d4d;
+}
+
+img.error {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  width: 60%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}

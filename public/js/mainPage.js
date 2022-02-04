@@ -6,7 +6,7 @@ const spanCount = document.querySelector('span.count');
 const searchWrap = document.querySelector('.search-wrap');
 const logo = document.querySelector('.logo');
 const ulNav = document.querySelector('ul.nav');
-
+const citySelect = searchWrap.querySelector('.form-select');
 buttonClear.addEventListener('click', () => {
   inputSearch.value = '';
 });
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({ query: '' }),
+    body: JSON.stringify({ title: '', city: '' }),
   });
   const result = await response.json();
   gridLayout.classList.add('appear');
@@ -33,31 +33,43 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
   });
   updateBucket();
+  createCityOption();
+  citySelect.addEventListener('change', (event) => {
+    console.log(event.target.value);
+  });
 });
 
-inputSearch.addEventListener('input', async () => {
-  const response = await fetch('/main', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json',
-    },
-    body: JSON.stringify({ query: inputSearch.value }),
-  });
-  const result = await response.json();
-  gridLayout.classList.add('disappear');
-  setTimeout(() => {
-    gridLayout.classList.remove('disappear');
-    gridLayout.classList.add('appear');
-    gridLayout.innerHTML = createHTML(result.allCards);
-  }, 500);
-});
+async function createCityOption() {
+  citySelect.innerHTML = '';
+  const response = await fetch('/main/city');
+  const allCities = await response.json();
+  citySelect.innerHTML = '<option selected value ="">Все города</option>';
+  citySelect.innerHTML += allCities.map((city) => `<option value ="${city.title}">${city.title}</option>`).join(' ');
+}
+
+// inputSearch.addEventListener('input', async () => {
+//   const response = await fetch('/main', {
+//     method: 'POST',
+//     headers: {
+//       'Content-type': 'application/json',
+//     },
+//     body: JSON.stringify({ query: inputSearch.value }),
+//   });
+//   const result = await response.json();
+//   gridLayout.classList.add('disappear');
+//   setTimeout(() => {
+//     gridLayout.classList.remove('disappear');
+//     gridLayout.classList.add('appear');
+//     gridLayout.innerHTML = createHTML(result.allCards);
+//   }, 500);
+// });
 buttonSearch.addEventListener('click', async () => {
   const response = await fetch('/main', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify({ query: inputSearch.value }),
+    body: JSON.stringify({ title: inputSearch.value, city: citySelect.value }),
   });
   const result = await response.json();
   gridLayout.classList.add('disappear');
@@ -69,9 +81,12 @@ buttonSearch.addEventListener('click', async () => {
 });
 
 function addToBucket(event) {
-  const { id } = event.target.closest('.card-wrap').dataset;
+  const cardWrap = event.target.closest('.card-wrap');
+  const { id } = cardWrap.dataset;
   const bucket = JSON.parse(localStorage.getItem('bucket'));
-
+  const image = cardWrap.querySelector('.card-image').src;
+  const title = cardWrap.querySelector('a.title > span').innerText.trim();
+  const price = +cardWrap.querySelector('.price').textContent.replace(/[\D]/gi, '');
   if (bucket) {
     const index = bucket.findIndex((card) => +card.id === +id);
     if (index > -1) {
@@ -80,6 +95,9 @@ function addToBucket(event) {
       const newCard = {
         id,
         count: 1,
+        image,
+        title,
+        price,
       };
       bucket.push(newCard);
     }
@@ -88,6 +106,9 @@ function addToBucket(event) {
     const bucket = [{
       id,
       count: 1,
+      image,
+      title,
+      price,
     }];
     localStorage.setItem('bucket', JSON.stringify(bucket));
   }
@@ -101,7 +122,7 @@ function createControl(event) {
   target.classList.add('disappear', 'events-none');
   setTimeout(() => {
     target.remove();
-  }, 500);
+  });
   buyWrap.innerHTML = '<div class = "control-wrap"><button class = "btn btn-success minus">-</button><span class="card-count">1 шт</span></span><button class = "btn btn-success plus">+</button></div>';
 }
 
@@ -118,6 +139,7 @@ function controlBucket(event) {
   const controlWrap = event.target.closest('.control-wrap');
   if (event.target.classList.contains('minus')) {
     bucket[indexCard].count--;
+    updateCount(buyWrap, bucket[indexCard].count);
     if (bucket[indexCard].count === 0) {
       bucket.splice(indexCard, 1);
       controlWrap.classList.add('disappear', 'events-none');
@@ -125,9 +147,8 @@ function controlBucket(event) {
         controlWrap.remove();
         buyWrap.classList.add('appear');
         buyWrap.innerHTML = '<button class = "btn btn-success buy">В корзину</button>';
-      }, 300);
+      });
     }
-    updateCount(buyWrap, bucket[indexCard].count);
   } else if (event.target.classList.contains('plus')) {
     bucket[indexCard].count++;
     updateCount(buyWrap, bucket[indexCard].count);
