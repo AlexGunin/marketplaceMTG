@@ -1,7 +1,14 @@
-<h1><div>{{ title_card }}</div></h1>
-<img src="{{ image }}">
-<div>{{ title_city }}</div>
-<div>{{ body }}</div>
-<div>{{ price }}</div>
-<div>{{ state }}</div>
-<div>{{ views }}</div>
+<div class="form-wrap">
+<link rel="stylesheet" href="/css/card.css">
+<h1 id="card" class="title">{{card.title}}</h1>
+<div class="image"><img src="{{card.image}}"></div>
+<body>
+<div id="card" class="dateAndViews">{{date}}</div>
+<div id="card" class="dateAndViews">Просмотрено: {{card.views}}</div>
+<div id="card" class="description">{{card.body}}</div>
+<div id="card" class="description">{{card.state}}</div>
+<h2 id="card" class="price">ЦЕНА: {{card.price}}</h2>
+<a id="card" href="/user/profile/:id">{{user}}</a>
+<div id="card">{{city}}</div>
+<button name="addToShopping" type="button" class="btn btn-primary">Добавить в корзину</button></body>
+</div>

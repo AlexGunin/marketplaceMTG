@@ -11,6 +11,14 @@ const PORT = 3000;
 
 const FileStore = require('session-file-store')(session);
 
+<<<<<<< HEAD
+=======
+const indexRouter = require('./routes/index');
+const loginRouter = require('./routes/loginAndReg');
+const cardRouter = require('./routes/card');
+const mainInfoRouter = require('./routes/main');
+
+>>>>>>> 21e3037bce35b2823acb84bcbf31d9bc149e7852
 app.use(session({
   store: new FileStore(),
   secret: 'qwe',
@@ -42,6 +50,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use((req, res, next) => {
   res.locals.username = req.session?.username;
   res.locals.userId = req.session?.userId;
+  res.locals.userCity = req.session?.userCity;
   next();
 });
 
@@ -52,7 +61,10 @@ app.set('view engine', 'hbs');
 app.use('/main', mainInfoRouter);
 app.use('/', indexRouter);
 app.use('/user', loginRouter);
+<<<<<<< HEAD
 // app.use('/profile', profileRouter);
+=======
+>>>>>>> 21e3037bce35b2823acb84bcbf31d9bc149e7852
 app.use('/card', cardRouter);
 
 

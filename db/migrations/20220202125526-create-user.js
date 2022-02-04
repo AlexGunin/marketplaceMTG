@@ -24,6 +24,10 @@ module.exports = {
           key: 'id',
         },
       },
+      photo: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

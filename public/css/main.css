@@ -1,3 +1,14 @@
+.count {
+  top: 0;
+  position: absolute;
+  right: 0;
+  background: red;
+  border-radius: 20px;
+  width: 30px;
+  font-size: 14px;
+  transform: translate(50%, -50%);
+}
+
 .content-wrap {
   display: flex;
   flex-direction: column;
@@ -9,6 +20,14 @@
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   margin-top: 50px;
+}
+
+.grid-layout.appear {
+  animation: appear 0.4s ease-in-out forwards;
+}
+
+.grid-layout.disappear {
+  animation: disappear 0.4s ease-in-out forwards;
 }
 
 .card-wrap {
@@ -45,7 +64,7 @@
   display: flex;
   flex: 1 0 auto;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   padding: 0 16px;
   width: 100%;
 }
@@ -97,3 +116,109 @@ i.search:hover {
   text-align: center;
 }
 
+.events-none {
+  pointer-events: none;
+}
+
+
+.buy.disappear {
+  animation: disappear 0.4s ease-in-out forwards;
+}
+
+.buy.appear {
+  animation: appear 0.4s ease-in-out forwards;
+}
+
+.appearLeft {
+  animation: appearLeft 0.6s ease-in-out forwards;
+}
+
+.appearTop {
+  animation: appearTop 0.6s ease-in-out forwards;
+}
+
+.appearRight {
+  animation: appearRight 0.6s ease-in-out forwards;
+}
+
+.appearBottom {
+  animation: appearBottom 0.6s ease-in-out forwards;
+}
+
+@keyframes appearLeft {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0) translateX(200%);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes appearRight {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0) translateX(-200%);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes appearTop {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0) translateY(-200%);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes appearBottom {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0) translateY(200%);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes appear {
+  from {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes disappear {
+  from {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0);
+  }
+}

@@ -13,6 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       this.belongsTo(models.City, { foreignKey: 'city_id' });
       this.hasOne(models.Card, { foreignKey: 'user_id' });
+      this.hasOne(models.Order, { foreignKey: 'buyer_id' });
+      this.hasOne(models.Order, { foreignKey: 'seller_id' });
     }
   }
 
@@ -20,7 +22,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     password: DataTypes.STRING,
-    city_id: DataTypes.INTEGER
+    city_id: DataTypes.INTEGER,
+    photo: DataTypes.TEXT,
   }, {
     sequelize,
     modelName: 'User',
