@@ -181,7 +181,7 @@ function createHTML(arr) {
         <div class="image-wrap">
           <img alt="Card"
                class="card-image"
-               src="/img/card1.png">
+               src="${card.image}">
         </div>
       </a>
       <div class="info">

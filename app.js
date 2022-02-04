@@ -35,6 +35,7 @@ app.use((req, res, next) => {
   res.locals.username = req.session?.username;
   res.locals.userId = req.session?.userId;
   res.locals.userCity = req.session?.userCity;
+  console.log(res.locals);
   next();
 });
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const { Op } = require('sequelize');
 const { Card, User, City } = require('../db/models');
-const { accessMiddleware, certainIdAccess } = require('../middleware/accessMiddleware');
+const { commonAccess, certainIdAccess } = require('../middleware/accessMiddleware');
 
 const router = express.Router();
 // /main
@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
 
   return res.json({ allCards });
 });
-router.get('/bucket/:userId', accessMiddleware, certainIdAccess, (req, res) => {
+router.get('/bucket/:userId', commonAccess, certainIdAccess, (req, res) => {
   res.render('bucket');
 });
 router.get('/city', async (req, res) => {
