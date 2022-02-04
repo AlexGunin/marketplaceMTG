@@ -1,31 +1,10 @@
-<form action=""></form>
-
-<div class="content-wrap">
-  <div class="grid-layout">
-    {{#each allCards}}
-    <div class="card-wrap">
-      <a class="link-card"
-         href="/card/{{this.id}}">
-        <div class="image-wrap">
-          <img alt="Card"
-               class="card-image"
-               src="/img/card1.png">
-        </div>
-      </a>
-      <div class="info">
-        <a class="title"
-           href="/card/{{this.id}}">
-          <span>{{this.title}}</span>
-        </a>
-        <span class="price">{{this.price}} Р</span>
-        <span>{{this.City.title}}</span>
-        <span>{{this.createdAt}}</span>
-      </div>
-      <button class="btn btn-success"
-              type="button">Купить
-      </button>
-      <div class="buyer"><a href="/user/profile/{{this.User.id}}">{{this.User.name}}</a></div>
+<form action="/user/posts" method="GET">
+<div>
+  <div>
+    {{#each userCard}}
+    <div>
+     <span>{{this.price}}</span>
     </div>
-    {{/each}}
   </div>
+</div>
 </form>

@@ -9,12 +9,13 @@ router.get('/signin', (req, res) => {
 });
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ where: { email } });
+  const user = await User.findOne({ where: { email }, include: [City] });
   if (user) {
     if (user.password === sha256(password)) {
       req.session.username = user.name;
       req.session.userId = user.id;
-      req.session.userCity = user.city;
+      req.session.useremail = user.email;
+      req.session.userCity = user.City.title;
       res.json({ message: 'OK' });
     } else {
       res.json({ error: 'неверный пароль' });
