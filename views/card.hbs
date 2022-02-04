@@ -1,31 +1,25 @@
-<link href="/css/card.css"
+<link href="/css/main.css"
       rel="stylesheet">
 
-<div class="form-wrap">
-  <h1 class="title"
-      id="card">{{card.title}}</h1>
-  <div class="image-wrap"><img src="/{{card.image}}"></div>
+<div class="flex-center">
+  <div class="solo-card-wrap">
+    <div class="link-card"
+         style="max-width: 450px">
+      <img alt="Card"
+           class="card-image"
+           src="/{{card.image}}">
+    </div>
+    <div class="card-info">
+      <span>{{card.title}}</span>
+      <span>{{card.body}}</span>
+      <span class="price">ЦЕНА: {{card.price}} Р</span>
+      <span>{{city}}</span>
+      <span>{{date}}</span>
+    </div>
+    <button class="btn btn-success"
+            type="button">Купить
+    </button>
+    <div class="buyer"><a href="/user/profile/{{this.User.id}}">{{this.User.name}}</a></div>
 
-
-  <div class="dateAndViews"
-       id="card">{{date}}
   </div>
-  <div class="dateAndViews"
-       id="card">Просмотрено: {{card.views}}
-  </div>
-  <div class="description"
-       id="card">{{card.body}}
-  </div>
-  <div class="description"
-       id="card">{{card.state}}
-  </div>
-  <h2 class="price"
-      id="card">ЦЕНА: {{card.price}}</h2>
-  <a href="/user/profile/:id"
-     id="card">{{user}}</a>
-  <div id="card">{{city}}</div>
-  <button class="btn btn-primary"
-          name="addToShopping"
-          type="button">Добавить в корзину
-  </button>
 </div>

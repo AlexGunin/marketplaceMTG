@@ -18,7 +18,7 @@ function createCard({
     </div>
     <div class="bucket-card__info">
       <div class="descr">${title}</div>
-      <div class="price">${price}</div>
+      <div class="price">${price} Р</div>
       <div class="quantity">${count} шт</div>
     </div>
   </div>
@@ -59,7 +59,7 @@ function updateTotal() {
   } else {
     const totalSum = choicedCard
       .map((card) => {
-        const price = +card.querySelector('.price').textContent.trim();
+        const price = +card.querySelector('.price').textContent.trim().replace(/\D/gi, '');
         const quantity = +card.querySelector('.quantity').textContent.trim().replace(/\D/gi, '');
         console.log(quantity);
         return price * quantity;
