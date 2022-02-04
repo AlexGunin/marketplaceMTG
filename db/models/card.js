@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     views: DataTypes.INTEGER,
     state: DataTypes.STRING,
     available: DataTypes.BOOLEAN,
+    quantity: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Card',
