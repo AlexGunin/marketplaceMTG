@@ -19,4 +19,7 @@ router.post('/', async (req, res) => {
 
   res.json({ allCards });
 });
+router.get('/bucket', (req, res) => {
+  res.render('bucket');
+});
 module.exports = router;
