@@ -4,7 +4,7 @@ formWrap.addEventListener('submit', login);
 
 async function login(event) {
   event.preventDefault();
-  const response = await fetch('http://localhost:3000/user/signin', {
+  const response = await fetch(`${window.location.origin}/user/signin`, {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -12,9 +12,10 @@ async function login(event) {
     body: JSON.stringify(Object.fromEntries(new FormData(formWrap))),
   });
   const result = await response.json();
-  console.log(result);
   if (result.message) {
-    window.location.href = 'http://localhost:3000/main';
+    window.location.href = `${window.location.origin}/main`;
+    console.log(result);
+  } else {
+    console.log(result.error);
   }
-  console.log(result);
 }

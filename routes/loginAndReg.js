@@ -14,7 +14,7 @@ router.post('/signin', async (req, res) => {
     if (user.password === sha256(password)) {
       req.session.username = user.name;
       req.session.userId = user.id;
-      console.log(req.session);
+
       res.json({ message: 'OK' });
     } else {
       res.json({ error: 'неверный пароль' });
@@ -37,7 +37,7 @@ router.post('/signup', async (req, res) => {
     return res.json({ error: 'Такой пользователь уже существует' });
   }
   await User.create({
-    name, email, password: sha256(password), city_id,
+    name: name.trim().split(' ')[0], email, password: sha256(password), city_id,
   });
   res.json({ message: 'ok' });
 });
@@ -45,6 +45,11 @@ router.post('/signup', async (req, res) => {
 router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('name');
-  res.redirect('http://localhost:3000/user/signin');
+  res.redirect('/user/signin');
+});
+
+router.get('/profile/:id', async (req, res) => {
+  const user = await User.findOne({ include: [City] });
+  res.render('profile', { user });
 });
 module.exports = router;
