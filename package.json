@@ -1,21 +1,29 @@
 {
-  "name": "teamPlay",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "marketplacemtg",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "express": "^4.17.2",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "^4.16.4",
+    "express-session": "^1.17.2",
     "hbs": "^4.2.0",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "multer": "^1.4.4",
+    "nodemailer": "^6.7.2",
+    "normalize.css": "^8.0.1",
+    "nvm": "0.0.4",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
+    "sass": "^1.49.7",
     "sequelize": "^6.15.0",
-    "sequelize-cli": "^6.4.1"
+    "sequelize-cli": "^6.4.1",
+    "session-file-store": "^1.5.0",
+    "sha256": "^0.2.0"
   },
   "devDependencies": {
     "eslint": "^8.8.0",

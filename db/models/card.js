@@ -11,10 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      this.hasOne(models.City, { foreignKey: 'city_id' });
-      this.hasOne(models.User, { foreignKey: 'user_id' });
+      this.belongsTo(models.City, { foreignKey: 'city_id' });
+      this.belongsTo(models.User, { foreignKey: 'user_id' });
+      this.hasOne(models.Order, { foreignKey: 'card_id' });
     }
   }
+
   Card.init({
     user_id: DataTypes.INTEGER,
     title: DataTypes.STRING,
@@ -23,7 +25,9 @@ module.exports = (sequelize, DataTypes) => {
     city_id: DataTypes.INTEGER,
     price: DataTypes.INTEGER,
     views: DataTypes.INTEGER,
-    state: DataTypes.STRING
+    state: DataTypes.STRING,
+    available: DataTypes.BOOLEAN,
+    quantity: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Card',

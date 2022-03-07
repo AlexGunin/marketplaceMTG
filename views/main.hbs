@@ -1,0 +1,54 @@
+<link href="/css/main.css"
+      rel="stylesheet">
+<script defer
+        src="/js/mainPage.js"></script>
+<div class="search-wrap">
+  <div class="flex-center">
+    <input class="search"
+           id="search"
+           type="text">
+    <i class="fas fa-times clear"></i>
+    <i class="fas fa-search search"></i>
+  </div>
+  <div class="form-check">
+    <select aria-label="Default select example"
+            class="form-select"
+            data-city="{{userCity}}"
+    >
+      <option selected>{{userCity}}</option>
+      <option value="1">One</option>
+      <option value="2">Two</option>
+      <option value="3">Three</option>
+    </select>
+  </div>
+</div>
+
+<div class="content-wrap">
+  <div class="grid-layout">
+    {{#each allCards}}
+    <div class="card-wrap">
+      <a class="link-card"
+         href="/card/{{this.id}}">
+        <div class="image-wrap">
+          <img alt="Card"
+               class="card-image"
+               src="/img/card1.png">
+        </div>
+      </a>
+      <div class="info">
+        <a class="title"
+           href="/card/{{this.id}}">
+          <span>{{this.title}}</span>
+        </a>
+        <span class="price">{{this.price}} Р</span>
+        <span>{{this.City.title}}</span>
+        <span>{{this.createdAt}}</span>
+      </div>
+      <button class="btn btn-success"
+              type="button">Купить
+      </button>
+      <div class="buyer"><a href="/user/profile/{{this.User.id}}">{{this.User.name}}</a></div>
+    </div>
+    {{/each}}
+  </div>
+</div>
