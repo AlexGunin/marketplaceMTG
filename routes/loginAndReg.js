@@ -10,11 +10,11 @@ router.get('/signin', (req, res) => {
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
   const user = await User.findOne({ where: { email }, include: [City] });
-  console.log(user);
   if (user) {
     if (user.password === sha256(password)) {
       req.session.username = user.name;
       req.session.userId = user.id;
+      req.session.useremail = user.email;
       req.session.userCity = user.City.title;
       console.log(req.session);
       res.json({ message: 'OK' });
@@ -48,5 +48,10 @@ router.get('/logout', (req, res) => {
   req.session.destroy();
   res.clearCookie('auth');
   res.redirect('/user/signin');
+});
+
+router.get('/profile/:id', async (req, res) => {
+  const user = await User.findOne({ include: [City] });
+  res.render('profile', { user });
 });
 module.exports = router;

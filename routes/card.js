@@ -2,10 +2,11 @@
 const express = require('express');
 const multer = require('multer');
 
-const upload = multer({ dest: 'public/uploads/' });
-const { Card, User, City } = require('../db/models');
-
 const router = express.Router();
+
+const upload = multer({ dest: 'public/uploads/' });
+
+const { Card, User, City } = require('../db/models');
 
 router.get('/:id', async (req, res) => {
   try {
@@ -24,6 +25,12 @@ router.get('/:id', async (req, res) => {
   } catch (err) {
     res.render('error');
   }
+});
+
+router.get('/posts/:id', async (req, res) => {
+  const { userId } = req.session;
+  const userCard = await Card.findAll({ where: { user_id: userId } });
+  res.render('usercard', { userCard });
 });
 
 router.get('/', (req, res) => {

@@ -24,6 +24,13 @@ app.use(session({
   cookie: { secure: false },
   name: 'auth',
 }));
+app.use((req, res, next) => {
+  next();
+});
+
+// view engine setup
+app.set('view engine', 'hbs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(cookieParser());
 app.use(express.json());
@@ -35,7 +42,8 @@ app.use((req, res, next) => {
   res.locals.username = req.session?.username;
   res.locals.userId = req.session?.userId;
   res.locals.userCity = req.session?.userCity;
-  console.log(res.locals);
+  res.locals.useremail = req.session?.useremail;
+
   next();
 });
 
@@ -47,6 +55,7 @@ app.use('/main', mainInfoRouter);
 app.use('/', indexRouter);
 app.use('/user', loginRouter);
 app.use('/card', cardRouter);
+
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
