@@ -16,6 +16,7 @@ router.post('/signin', async (req, res) => {
       req.session.userId = user.id;
       req.session.useremail = user.email;
       req.session.userCity = user.City.title;
+      console.log(req.session);
       res.json({ message: 'OK' });
     } else {
       res.json({ error: 'неверный пароль' });

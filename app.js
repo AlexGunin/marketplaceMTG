@@ -43,6 +43,7 @@ app.use((req, res, next) => {
   res.locals.userId = req.session?.userId;
   res.locals.userCity = req.session?.userCity;
   res.locals.useremail = req.session?.useremail;
+
   next();
 });
 

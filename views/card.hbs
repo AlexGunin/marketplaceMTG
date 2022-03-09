@@ -1,14 +1,25 @@
-<div class="form-wrap">
-<link rel="stylesheet" href="/css/card.css">
-<h1 id="card" class="title">{{card.title}}</h1>
-<img src="/{{card.image}}">
-<body>
-<div id="card" class="dateAndViews">{{date}}</div>
-<div id="card" class="dateAndViews">Просмотрено: {{card.views}}</div>
-<div id="card" class="description">{{card.body}}</div>
-<div id="card" class="description">{{card.state}}</div>
-<h2 id="card" class="price">ЦЕНА: {{card.price}}</h2>
-<a id="card" href="/user/profile/:id">{{user}}</a>
-<div id="card">{{city}}</div>
-<button name="addToShopping" type="button" class="btn btn-primary">Добавить в корзину</button></body>
+<link href="/css/main.css"
+      rel="stylesheet">
+
+<div class="flex-center">
+  <div class="solo-card-wrap">
+    <div class="link-card"
+         style="max-width: 450px">
+      <img alt="Card"
+           class="card-image"
+           src="/{{card.image}}">
+    </div>
+    <div class="card-info">
+      <span>{{card.title}}</span>
+      <span>{{card.body}}</span>
+      <span class="price">ЦЕНА: {{card.price}} Р</span>
+      <span>{{city}}</span>
+      <span>{{date}}</span>
+    </div>
+    <button class="btn btn-success"
+            type="button">Купить
+    </button>
+    <div class="buyer"><a href="/user/profile/{{this.User.id}}">{{this.User.name}}</a></div>
+
+  </div>
 </div>

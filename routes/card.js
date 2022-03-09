@@ -9,18 +9,22 @@ const upload = multer({ dest: 'public/uploads/' });
 const { Card, User, City } = require('../db/models');
 
 router.get('/:id', async (req, res) => {
-  const { id } = req.params;
-  const card = await Card.findOne({ where: { id }, include: [User, City], raw: true });
-  const user = card['User.name'];
-  const city = card['City.title'];
-  const options = {
-    month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
-  };
-  const date = card.createdAt.toLocaleDateString('ru', options);
+  try {
+    const { id } = req.params;
+    const card = await Card.findOne({ where: { id }, include: [User, City], raw: true });
+    const user = card['User.name'];
+    const city = card['City.title'];
+    const options = {
+      month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric',
+    };
+    const date = card.createdAt.toLocaleDateString('ru', options);
 
-  res.render('card', {
-    card, user, city, date,
-  });
+    res.render('card', {
+      card, user, city, date,
+    });
+  } catch (err) {
+    res.render('error');
+  }
 });
 
 router.get('/posts/:id', async (req, res) => {

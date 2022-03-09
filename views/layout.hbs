@@ -34,30 +34,30 @@
     {{#if username}}
     <li class="nav-item">
       <a class="nav-link"
-         href="http://localhost:3000/user/profile/{{userId}}">{{username}}</a>
+         href="/user/profile/{{userId}}">{{username}}</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         href="http://localhost:3000/user/profile/{{userId}}">Заказы</a>
+         href="/user/profile/{{userId}}">Заказы</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         href="http://localhost:3000/main/bucket/{{userId}}">Корзина</a>
+         href="/main/bucket/{{userId}}">Корзина</a>
       <span class="count"></span>
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         href="http://localhost:3000/user/logout">Выход</a>
+         href="/user/logout">Выход</a>
     </li>
     {{else}}
     <li class="nav-item">
       <a aria-current="page"
          class="nav-link"
-         href="http://localhost:3000/user/signin">Вход</a>
+         href="/user/signin">Вход</a>
     </li>
     <li class="nav-item">
       <a class="nav-link"
-         href="http://localhost:3000/user/signup">Регистрация</a>
+         href="/user/signup">Регистрация</a>
     </li>
     {{/if}}
   </ul>
